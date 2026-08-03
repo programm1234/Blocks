@@ -6,7 +6,7 @@ import Keylistener from "./Keylistener.js";
 
 const MAXDELTA = 20;
 const GRAVITY = 0.001;
-const MOVEMENTSPEED = 0.2;
+const MOVEMENTSPEED = 0.3;
 
 const renderer = new Renderer();
 const player = new Player( 500, 1050, 20, 50);
@@ -51,20 +51,15 @@ function update(deltaTime) {
     player.vy -= GRAVITY * deltaTime;
 
     player.x += player.vx * deltaTime;
-    let block = touchingBlock();
-    if(block != null){
-        player.x -= player.vx * deltaTime;
-        player.vx *= -1;
-    }
+
+    let block1 = touchingBlock();
     player.y += player.vy * deltaTime;
-    block = touchingBlock();
-    if(block != null){
-        if(player.vy > 0){
+    let block2 = touchingBlock();
+
+    if(block1 == null && block2 != null){
+        if(player.vy < 0){
             player.y -= player.vy * deltaTime;
-            player.vy *= -1;
-        }else{
-            player.y -= player.vy * deltaTime;
-            player.vy = block.jumpPower;
+            player.vy = block2.jumpPower;
         }
     }
 

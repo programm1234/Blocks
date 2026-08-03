@@ -4,6 +4,13 @@ export default class Renderer {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         window.addEventListener('resize', this.resizeCanvas);
+
+        this.getX;
+        this.getY;
+        this.stretch;
+        this.setColor = (r,g,b) => {
+            this.ctx.fillStyle = `rgb(${r},${g},${b})`;
+        }
     }
 
     resizeCanvas = () => {
@@ -11,28 +18,29 @@ export default class Renderer {
         this.canvas.height = window.innerHeight;
     };
 
-    draw(player, blocks, camera) {
-        const getX = x => {
+    defineTransformations(camera){
+        this.getX = x => {
             return (x - camera.x) * camera.zoom + this.canvas.width/2;
         };
-        const getY = y => {
+        this.getY = y => {
             return (camera.y - y) * camera.zoom + this.canvas.height/2;
         };
-        const stretch = length => {
+        this.stretch = length => {
             return camera.zoom * length;
         };
-        const setColor = (r,g,b) => {
-            this.ctx.fillStyle = `rgb(${r},${g},${b})`;
-        }
+    }
 
+    draw(player, blocks, camera) {
+        
+        this.defineTransformations(camera);
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.fillStyle = "green";
-        this.ctx.fillRect(getX(player.x), getY(player.y), stretch(player.width), stretch(player.height));
-
         blocks.forEach(block => {
-            setColor(255,255,255);
-            this.ctx.fillRect(getX(block.x), getY(block.y), stretch(block.width), stretch(block.height));
+            this.setColor(200,200,200);
+            this.ctx.fillRect(this.getX(block.x), this.getY(block.y), this.stretch(block.width), this.stretch(block.height));
         });
+
+        this.setColor(0,100,0);
+        this.ctx.fillRect(this.getX(player.x), this.getY(player.y), this.stretch(player.width), this.stretch(player.height));
     }
 }
