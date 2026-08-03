@@ -25,7 +25,6 @@ for (let i = 0; i < 40; i++) {
 }
 
 let lastTime = 0;
-init();
 resize();
 window.addEventListener('resize', resize);
 requestAnimationFrame(gameLoop);
