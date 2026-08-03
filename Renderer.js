@@ -3,7 +3,6 @@ export default class Renderer {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
-        window.addEventListener('resize', this.resizeCanvas);
 
         this.getX;
         this.getY;

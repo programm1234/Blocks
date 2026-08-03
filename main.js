@@ -7,10 +7,11 @@ import Keylistener from "./Keylistener.js";
 const MAXDELTA = 20;
 const GRAVITY = 0.001;
 const MOVEMENTSPEED = 0.3;
+const MAPWIDTH = 1000;
 
 const renderer = new Renderer();
 const player = new Player( 500, 1050, 20, 50);
-const camera = new Camera( 0, 0, 1, 0.99);
+const camera = new Camera( 0, 0, 1000, 0.99);
 const keylistener = new Keylistener;
 const blocks = [];
 for (let i = 0; i < 40; i++) {
@@ -25,12 +26,13 @@ for (let i = 0; i < 40; i++) {
 
 let lastTime = 0;
 init();
+resize();
+window.addEventListener('resize', resize);
+requestAnimationFrame(gameLoop);
 
-function init() {
-    console.log("Spiel gestartet!");
+function resize(){
     renderer.resizeCanvas();
-    
-    requestAnimationFrame(gameLoop);
+    camera.setZoom(renderer);
 }
 
 function gameLoop(timestamp) {
