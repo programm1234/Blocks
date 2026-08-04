@@ -7,12 +7,13 @@ export default class Renderer {
         this.getX;
         this.getY;
         this.stretch;
-        this.setColor = (r,g,b) => {
-            this.ctx.fillStyle = `rgb(${r},${g},${b})`;
-        }
     }
 
-    resizeCanvas = () => {
+    setColor(r,g,b){
+        this.ctx.fillStyle = `rgb(${r},${g},${b})`;
+    }
+
+    resizeCanvas(){
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
     };
@@ -34,10 +35,10 @@ export default class Renderer {
         this.defineTransformations(camera);
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        blocks.forEach(block => {
-            this.setColor(200,200,200);
+        for (const block of blocks){
+            this.setColor(200,200,255 - 200 * block.jumpPower);
             this.ctx.fillRect(this.getX(block.x), this.getY(block.y), this.stretch(block.width), this.stretch(block.height));
-        });
+        }
 
         this.setColor(0,100,0);
         this.ctx.fillRect(this.getX(player.x), this.getY(player.y), this.stretch(player.width), this.stretch(player.height));
