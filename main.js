@@ -3,12 +3,11 @@ import Block from "./Block.js";
 import Player from "./Player.js";
 import Camera from "./Camera.js";
 import {generate} from "./Generator.js";
-
-const MAXDELTA = 20;
+import {MAXDELTA, STARTX, STARTY} from "./constants.js";
 
 const renderer = new Renderer();
-const player = new Player( 500 - 20/2, 10 + 50, 20, 50);
-const camera = new Camera( 500 - player.width/2, 10**4, 1000, 0.99);
+const player = new Player(STARTX - 20/2, STARTY + 10 + 50, 20, 50);
+const camera = new Camera(player.x + player.width/2, player.y - player.height/2, 1000, 0.99);
 const blocks = generate();
 
 let lastTime = 0;

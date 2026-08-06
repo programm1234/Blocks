@@ -1,22 +1,9 @@
 import Block from "./Block.js";
-
-// from player
-const GRAVITY = 0.001;
-const MOVEMENTSPEED = 0.3;
-//
-
-
-const TARGETX = 500;
-const TARGETY = 10**4;
-
-const FIELDWIDTH = 1000;
-
-const BLOCKWIDTH = 50;
-const BLOCKHEIGHT = 10;
+import {GRAVITY, MOVEMENTSPEED, TARGETX, TARGETY, STARTX, STARTY, FIELDWIDTH, BLOCKWIDTH, BLOCKHEIGHT} from "./constants.js";
 
 export function generate(){
     let Blocks = [];
-    Blocks.push(new Block(TARGETX - BLOCKWIDTH/2, 0, BLOCKWIDTH, BLOCKHEIGHT, 0.5))
+    Blocks.push(new Block(STARTX - BLOCKWIDTH/2, STARTY, BLOCKWIDTH, BLOCKHEIGHT, 0.5))
     while(getReachableY(TARGETX, Blocks) < TARGETY){
         addNewBlock(Blocks);
     }

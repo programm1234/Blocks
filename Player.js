@@ -1,7 +1,6 @@
 import Keylistener from "./Keylistener.js";
+import {GRAVITY, MOVEMENTSPEED} from "./constants.js";
 
-const GRAVITY = 0.001;
-const MOVEMENTSPEED = 0.3;
 const keylistener = new Keylistener();
 
 export default class player {
