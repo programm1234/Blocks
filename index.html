@@ -10,27 +10,27 @@
                 padding: 0;
                 width: 100%;
                 height: 100%;
-                overflow: hidden; /* Verhindert, dass man scrollen kann */
+                overflow: hidden; /* kein scrollen */
                 background-color: #000000;
                 color: white;
             }
 
             canvas {
-                display: block; /* Wichtig, damit keine Lücke unter dem Canvas entsteht */
+                display: block; /* keine Lücke */
             }
 
-            #gameContainer {
+            div {
                 position: relative;
                 display: inline-block;
             }
-            
+
             #Button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
 
-            display: none; /* Hidden until needed */
+            display: none;
 
             z-index: 10;
             padding: 12px 24px;
@@ -39,9 +39,9 @@
         </style>
     </head>
     <body>
-        <div id="gameContainer">
+        <div>
             <canvas id="gameCanvas"></canvas>
-            <button id="Button">Restart</button>
+            <button id="Button"></button>
         </div>
         <script type="module" src="main.js"></script>
 

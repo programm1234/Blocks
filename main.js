@@ -42,7 +42,13 @@ function gameLoop(timestamp) {
     update(deltaTime);
     renderer.draw(player, blocks, camera);
 
-    if(player.y < -1000 || player.y - player.height > TARGETY && player.x > TARGETX - BLOCKWIDTH/2 && player.x + player.width < TARGETX + BLOCKWIDTH/2){
+    if(player.y < -1000){
+        Button.textContent = "Restart";
+        Button.style.display = "inline-block";
+        return;
+    }
+    if(player.y - player.height > TARGETY && player.x > TARGETX - BLOCKWIDTH/2 && player.x + player.width < TARGETX + BLOCKWIDTH/2){
+        Button.textContent = "You Won! New Level?";
         Button.style.display = "inline-block";
         return;
     }
