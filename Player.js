@@ -14,6 +14,13 @@ export default class player {
         this.vy = 0;
     }
 
+    reset(x, y){
+        this.x = x;
+        this.y = y;
+        this.vx = 0;
+        this.vy = 0;
+    }
+
     move(deltaTime, blocks){
         this.vx = MOVEMENTSPEED * (keylistener.d - keylistener.a);
         this.vy -= GRAVITY * deltaTime;

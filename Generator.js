@@ -4,6 +4,7 @@ import {GRAVITY, MOVEMENTSPEED, TARGETX, TARGETY, STARTX, STARTY, FIELDWIDTH, BL
 export function generate(){
     let Blocks = [];
     Blocks.push(new Block(STARTX - BLOCKWIDTH/2, STARTY, BLOCKWIDTH, BLOCKHEIGHT, 0.5))
+    console.log(getReachableY(0, Blocks));
     while(getReachableY(TARGETX, Blocks) < TARGETY){
         addNewBlock(Blocks);
     }
