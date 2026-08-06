@@ -3,10 +3,6 @@ export default class Renderer {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
-
-        this.getX;
-        this.getY;
-        this.stretch;
     }
 
     setColor(r,g,b){

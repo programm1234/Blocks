@@ -2,24 +2,14 @@ import Renderer from "./Renderer.js";
 import Block from "./Block.js";
 import Player from "./Player.js";
 import Camera from "./Camera.js";
+import {generate} from "./Generator.js";
 
 const MAXDELTA = 20;
-const MAPWIDTH = 1000;
 
 const renderer = new Renderer();
-const player = new Player( 500, 1050, 20, 50);
-const camera = new Camera( 0, 0, 1000, 0.99);
-const blocks = [];
-for (let i = 0; i < 10; i++) {
-
-    let x =  Math.random() * 1000;
-    let y =  Math.random() * 1000;
-    let width = 50;
-    let height = 10;
-    let jumpPower = 0.5 * (Math.random() ** 4) + 0.5;
-
-    blocks.push(new Block( x, y, width, height, jumpPower));
-}
+const player = new Player( 500 - 20/2, 10 + 50, 20, 50);
+const camera = new Camera( 500 - player.width/2, 10**4, 1000, 0.99);
+const blocks = generate();
 
 let lastTime = 0;
 resize();

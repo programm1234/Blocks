@@ -9,8 +9,8 @@ export default class Camera {
     }
 
     setZoom(renderer){
-        let viewSize = Math.min(renderer.canvas.width, renderer.canvas.height);
-        this.zoom = viewSize/this.desiredViewSize;
+        const {width, height} = renderer.canvas;
+        this.zoom = Math.min(width, height) / this.desiredViewSize;
     }
 
     move(deltaTime, playerX, playerY){

@@ -2,11 +2,11 @@ import Keylistener from "./Keylistener.js";
 
 const GRAVITY = 0.001;
 const MOVEMENTSPEED = 0.3;
+const keylistener = new Keylistener();
 
 export default class player {
 
     constructor( x, y, width, height){
-        this.keylistener = new Keylistener();
         this.x = x;
         this.y = y;
         this.width = width;
@@ -16,7 +16,7 @@ export default class player {
     }
 
     move(deltaTime, blocks){
-        this.vx = MOVEMENTSPEED * (this.keylistener.d - this.keylistener.a);
+        this.vx = MOVEMENTSPEED * (keylistener.d - keylistener.a);
         this.vy -= GRAVITY * deltaTime;
 
         this.x += this.vx * deltaTime;
