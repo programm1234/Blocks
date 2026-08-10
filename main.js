@@ -42,7 +42,7 @@ function gameLoop(timestamp) {
     update(deltaTime);
     renderer.draw(player, blocks, camera);
 
-    if(player.y < -1000){
+    if(player.y < -3000){
         Button.textContent = "Restart";
         Button.style.display = "inline-block";
         return;
