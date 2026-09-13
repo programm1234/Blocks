@@ -1,5 +1,4 @@
 import Renderer from "./Renderer.js";
-import Block from "./Block.js";
 import Player from "./Player.js";
 import Camera from "./Camera.js";
 import {generate} from "./Generator.js";
